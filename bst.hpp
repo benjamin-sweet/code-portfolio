@@ -1,31 +1,35 @@
+/*****************************************************************************/
+/*DEFAULT CONSTRUCTOR - Creates empty tree with a defined threshold value for*/
+/*restructuring based on search frequency of a value.						 */
+/*****************************************************************************/
 template <typename T>
 BST<T>::BST(int th) : thresholdVal(th), root(NULL){}
 
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*PRIMARY CONSTRUCTOR - constructs a tree based on a string of input values  */
+/*by calling buildFromInputString Function. 								 */
+/*****************************************************************************/
 template <typename T>
 BST<T>::BST( string input , int th ) : root(NULL), thresholdVal(th) {
-
    buildFromInputString( input );
 }
 
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*Overloaded Assignment Operator											 */
+/*****************************************************************************/
 template <typename T>
 const BST<T>& BST<T>::operator=(const BST& rhs){
 
-   if( this != &rhs ){
-      makeEmpty();
-      root = clone(rhs.root);
+   if( this != &rhs ){ //IF this object != reference of right hand side
+      makeEmpty();	   //empty THIS tree
+      root = clone(rhs.root); //clone the right hand side to THIS
    }
-   return *this;
+   return *this; 	   //return this object.
 }
 
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*CLONE FUNCTION - Clones a subtree by making deep copies.					 */
+/*****************************************************************************/
 template <typename T>
 typename BST<T>::BSTNode* BST<T>::clone( BSTNode* subTree ) const{
 
@@ -35,9 +39,10 @@ typename BST<T>::BSTNode* BST<T>::clone( BSTNode* subTree ) const{
    return new BSTNode( subTree->data, clone(subTree->left), clone(subTree->right));
 }
 
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*BUILDFROMINPUTSTRING - Empties THIS of all data then builds a new tree by  */
+/*parsing the input string with a whitespace delimiter. 					 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::buildFromInputString( string input ){
 
@@ -57,9 +62,9 @@ void BST<T>::buildFromInputString( string input ){
    }
 }
 
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 BST<T>::BST(const BST<T>& bst) : root(NULL), thresholdVal(bst.thresholdVal){
 
@@ -68,7 +73,6 @@ BST<T>::BST(const BST<T>& bst) : root(NULL), thresholdVal(bst.thresholdVal){
 
 //*****************************************************************************
 //*****************************************************************************
-
 template <typename T>
 BST<T>::~BST(){
 
@@ -321,7 +325,6 @@ void BST<T>::printLevelOrder( BSTNode* subTree) const {
 
 template <typename T>
 void BST<T>::printLevelOrder() const {
-
    printLevelOrder(root);
    cout << endl;
 }
