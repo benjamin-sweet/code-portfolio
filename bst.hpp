@@ -20,11 +20,11 @@ BST<T>::BST( string input , int th ) : root(NULL), thresholdVal(th) {
 template <typename T>
 const BST<T>& BST<T>::operator=(const BST& rhs){
 
-   if( this != &rhs ){ //IF this object != reference of right hand side
-      makeEmpty();	   //empty THIS tree
-      root = clone(rhs.root); //clone the right hand side to THIS
+   if( this != &rhs ){ 			//IF this object != reference of right hand side
+      makeEmpty();	  			//empty THIS tree
+      root = clone(rhs.root); 	//clone the right hand side to THIS
    }
-   return *this; 	   //return this object.
+   return *this; 	   			//return this object.
 }
 
 /*****************************************************************************/
@@ -71,20 +71,26 @@ BST<T>::BST(const BST<T>& bst) : root(NULL), thresholdVal(bst.thresholdVal){
    operator=(bst);
 }
 
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*DESTRUCTOR - calls makeEmpty() to delete the tree.						 */
+/*****************************************************************************/
 template <typename T>
 BST<T>::~BST(){
 
    makeEmpty();
 }
-
+/*****************************************************************************/
+/*makeEmpty() - public wrapper function of makeEmpty(BSTNoed<T>*& subTree)		 */
+/*empties the entire Binary Search Tree and reclaims memory.				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::makeEmpty(){
-
    makeEmpty(root);
 }
-
+/*****************************************************************************/
+/*makeEmpty(BSTNode<T>*& subTree) - empties all branches under a given 	 	 */
+/*root node of a tree. 														 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::makeEmpty(BSTNode *&subTree){
 
@@ -96,10 +102,9 @@ void BST<T>::makeEmpty(BSTNode *&subTree){
    subTree = NULL;
 
 }
-
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::insert( const T& v, BSTNode *&subTree ){
 
@@ -119,8 +124,9 @@ void BST<T>::insert( const T& v ){
    insert( v, root );
 }
 
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 
 template <typename T>
 void BST<T>::printInOrder( BSTNode *subTree ) const{
@@ -133,16 +139,18 @@ void BST<T>::printInOrder( BSTNode *subTree ) const{
       printInOrder( subTree->right );
    }
 }
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::printInOrder() const{
-
    printInOrder( root );
    cout << endl;
 }
 
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 
 template <typename T>
 typename BST<T>::BSTNode* BST<T>::findMin( BSTNode* subTree ) const{
@@ -156,8 +164,9 @@ typename BST<T>::BSTNode* BST<T>::findMin( BSTNode* subTree ) const{
 
 }
 
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 
 template <typename T>
 void BST<T>::remove( const T& v, BSTNode *& subTree ){
@@ -178,15 +187,15 @@ void BST<T>::remove( const T& v, BSTNode *& subTree ){
       delete oldNode;
    }     
 }
-
+/*****************************************************************************/
+/*****************************************************************************/
 template <typename T>
 void BST<T>::remove( const T& v ){
-
    remove(v, root);
 }
-
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 
 template <typename T>
 bool BST<T>::contains( const T& v, BSTNode *&subTree, BSTNode *&subTreeParent ){
@@ -218,15 +227,17 @@ bool BST<T>::contains( const T& v, BSTNode *&subTree, BSTNode *&subTreeParent ){
    }
    return true;     
 }
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 bool BST<T>::contains( const T& v ){
 
    return contains( v, root, root );
 }
-
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 
 template <typename T>
 bool BST<T>::empty(){
@@ -237,8 +248,9 @@ bool BST<T>::empty(){
       return false;
 }
 
-//*****************************************************************************
-//*****************************************************************************
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 
 template <typename T>
 int BST<T>::numOfNodes(BSTNode* subTree) const{
@@ -249,16 +261,17 @@ int BST<T>::numOfNodes(BSTNode* subTree) const{
       return ( numOfNodes( subTree->left ) + numOfNodes(subTree->right) + 1);
    
 }
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 int BST<T>::numOfNodes() const{
 
    return numOfNodes( root );
 }
-
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 int BST<T>::height( BSTNode* subTree ) const{
 
@@ -279,19 +292,18 @@ int BST<T>::height( BSTNode* subTree ) const{
     }
 }
 
-//*****************************************************************************
-//*****************************************************************************
-
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 int BST<T>::height() const{
 
    return height( root );
 }
 
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::printLevelOrder( BSTNode* subTree) const {
 
@@ -319,19 +331,17 @@ void BST<T>::printLevelOrder( BSTNode* subTree) const {
       cout << nodeVec[i] << " ";
    }
 }
-
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::printLevelOrder() const {
    printLevelOrder(root);
    cout << endl;
 }
-
-//*****************************************************************************
-//*****************************************************************************
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::leftRotate( BSTNode *&subTreeParent ){
 
@@ -340,7 +350,9 @@ void BST<T>::leftRotate( BSTNode *&subTreeParent ){
    tempNode->right = subTreeParent;
    subTreeParent = tempNode;      
 }
-
+/*****************************************************************************/
+/*COPY CONSTRUCTOR - calls the overloaded assignment operator. 				 */
+/*****************************************************************************/
 template <typename T>
 void BST<T>::rightRotate( BSTNode *&subTreeParent ){
 

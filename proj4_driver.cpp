@@ -18,8 +18,9 @@ int main() {
     if (!bst1.empty()) {
     	cout << "Inorder traversal: ";
     	bst1.printInOrder();
-  	cout << "Level order traversal: ";
-	bst1.printLevelOrder();
+		
+  	    cout << "Level order traversal: ";
+	    bst1.printLevelOrder();
 
     	// test copy constructor
     	BST<int> bst2(bst1);
@@ -44,7 +45,7 @@ int main() {
     	cout << "Inorder traversal: ";
     	bsts1.printInOrder();
     	cout << "Level order traversal: ";
-	bsts1.printLevelOrder();
+		bsts1.printLevelOrder();
 
     	// test copy constructor
     	BST<string> bst2(bsts1);
